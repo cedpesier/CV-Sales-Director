@@ -4,3 +4,4 @@
 *.jpg
 CV_VP-Sales_CedricPesier.html
 .DS_Store
+build_i18n.py
