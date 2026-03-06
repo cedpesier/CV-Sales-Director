@@ -38,51 +38,119 @@ To deploy a change: just push your code to `main` (see below). The site will upd
 
 ---
 
-## 🚨🚨 ⚠️⚠️ Pull latest `main` before modifying code 🚨🚨 ⚠️⚠️
+## Git basics (for non-technical users)
 
-Before starting any local change, sync your local branch with remote `main`:
+Git is a version history tool for your project:
 
-```bash
-# 1. Ensure you are on main
-git switch main
+1. It remembers every change made to files.
+2. It lets you go back if something breaks.
+3. It helps multiple people work on the same project safely.
+4. It sends your local updates to GitHub (shared online version).
 
-# 2. Get latest references from GitHub
-git fetch origin
+Simple idea:
 
-# 3. Fast-forward local main to remote main
-git pull --ff-only origin main
-```
-
-Why this is needed:
-
-1. Prevents working on an outdated branch state.
-2. Reduces merge/cherry-pick conflicts later.
-3. Avoids accidental history issues (for example, committing on top of stale commits).
-4. Ensures your changes are based on the exact latest code that will be deployed.
+- Your computer has a local copy.
+- GitHub has the shared copy.
+- You sync them regularly, make changes, then publish them.
 
 ---
 
-## How to push code changes to GitHub
+## Git branching (what it is and why it helps)
 
-After editing any file locally, run these those commands in your terminal:
+A branch is a separate workspace for a specific change.
+
+- `main` = the stable, official version.
+- `feature branch` = where you safely test a new change.
+
+Why use branches:
+
+1. Keeps `main` clean and stable.
+2. Avoids mixing unrelated changes together.
+3. Makes review and rollback easier.
+
+Typical branch start:
 
 ```bash
-# 1. Stage your changes (tell git which files to include)
-git add .
-
-# 2. Commit with a short description of what you changed
-git commit -m "A brief message describing the change"
-
-# 3. Push to GitHub — this also triggers the deployment
-git push
+git switch main
+git pull --ff-only origin main
+git switch -c feat/my-change
 ```
 
-The live site will reflect your changes automatically within a minute.
+---
 
-### Useful git commands
+## Pull latest `main` before any modification
+
+Before editing files, always sync with the latest code:
+
+```bash
+git switch main
+git fetch origin
+git pull --ff-only origin main
+```
+
+Why this is important:
+
+1. Prevents working on outdated code.
+2. Reduces conflicts later.
+3. Avoids history mistakes (for example, building on old commits).
+
+---
+
+## Commit and push your changes
+
+After your edits are done:
+
+```bash
+# 1. If you are not on a feature branch yet, create one
+git switch -c feat/my-change
+
+# 2. Save your work in Git
+git add .
+git commit -m "Describe what was changed"
+
+# 3. Publish to GitHub
+git push -u origin feat/my-change
+```
+
+Then open a Pull Request from your branch to `main`.
+
+Useful commands:
 
 | Command             | What it does                            |
 | ------------------- | --------------------------------------- |
-| `git status`        | Shows which files have been modified    |
-| `git diff`          | Shows exactly what changed line by line |
-| `git log --oneline` | Lists recent commits                    |
+| `git status`        | Shows changed files                     |
+| `git diff`          | Shows exact line-by-line differences    |
+| `git log --oneline` | Shows recent commit history             |
+
+---
+
+## AI prompting for Cursor
+
+Use this prompt in Cursor when asking for code changes:
+
+```text
+Act as a senior front-end developer specialized in HTML, CSS, and JavaScript.
+
+Project constraints:
+- Always follow the current project structure and naming conventions.
+- Do not introduce unnecessary frameworks, build tools, or dependencies.
+- Keep existing behavior unless the requested change explicitly requires otherwise.
+
+Engineering standards:
+- Apply separation of concerns (HTML structure, CSS styling, JS behavior).
+- Follow DRY principles and avoid duplicated logic.
+- Write clean, readable, and maintainable code.
+- Prefer small, focused, reusable functions.
+- Add concise comments only when the intent is not obvious.
+
+Quality requirements:
+- Keep performance in mind (minimal DOM work, efficient selectors/events, avoid unnecessary reflows).
+- Keep accessibility in mind (semantic HTML, keyboard navigation, focus states, aria attributes when needed, sufficient contrast).
+- Ensure responsive behavior on desktop and mobile.
+- Preserve compatibility with current files and deployment workflow.
+
+Before finalizing:
+- Briefly explain what changed and why.
+- Highlight any tradeoffs.
+- Provide a quick verification checklist for functionality, performance, and accessibility.
+```
