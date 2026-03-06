@@ -38,6 +38,30 @@ To deploy a change: just push your code to `main` (see below). The site will upd
 
 ---
 
+## 🚨🚨 ⚠️⚠️ Pull latest `main` before modifying code 🚨🚨 ⚠️⚠️
+
+Before starting any local change, sync your local branch with remote `main`:
+
+```bash
+# 1. Ensure you are on main
+git switch main
+
+# 2. Get latest references from GitHub
+git fetch origin
+
+# 3. Fast-forward local main to remote main
+git pull --ff-only origin main
+```
+
+Why this is needed:
+
+1. Prevents working on an outdated branch state.
+2. Reduces merge/cherry-pick conflicts later.
+3. Avoids accidental history issues (for example, committing on top of stale commits).
+4. Ensures your changes are based on the exact latest code that will be deployed.
+
+---
+
 ## How to push code changes to GitHub
 
 After editing any file locally, run these those commands in your terminal:
