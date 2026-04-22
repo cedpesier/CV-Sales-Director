@@ -340,6 +340,25 @@ nav.scrolled { border-bottom-color: var(--border); }
   border-top: 1px dashed rgba(47, 129, 247, 0.2);
 }
 
+.stat-map-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.stat-map-name {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 800;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.stat-map-svg {
+  width: 42px;
+  height: auto;
+  flex-shrink: 0;
+}
+
 .stat { text-align: left; }
 
 .stat-value {
@@ -1308,17 +1327,29 @@ footer {
       </div>
 
       <div class="hero-stats hero-stats-personal">
-        <div class="stat">
-          <div class="stat-value">🍷</div>
-          <div class="stat-label" data-i18n="hero.pstat1">Born in Bordeaux</div>
+        <div class="stat stat-map">
+          <div class="stat-map-row">
+            <span class="stat-map-name">Bordeaux</span>
+            <svg class="stat-map-svg" viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M38 2C34 2 28 6 24 10C20 14 18 16 16 22C14 28 12 32 10 36C8 40 6 46 6 50C6 54 8 60 10 64C12 68 16 72 20 76C24 80 28 82 34 84C40 86 44 86 50 84C56 82 60 78 64 74C68 70 70 66 72 60C74 54 74 48 72 42C70 36 68 32 64 26C60 20 56 16 52 12C48 8 44 4 38 2Z" fill="var(--accent-dim)" stroke="var(--accent)" stroke-width="1.5"/>
+              <circle cx="34" cy="52" r="3.5" fill="var(--accent3)" stroke="#fff" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="stat-label" data-i18n="hero.pstat1">Born in (1986)</div>
         </div>
-        <div class="stat">
-          <div class="stat-value">🏠</div>
-          <div class="stat-label" data-i18n="hero.pstat2">Madrid since 2013</div>
+        <div class="stat stat-map">
+          <div class="stat-map-row">
+            <span class="stat-map-name">Madrid ❤️</span>
+            <svg class="stat-map-svg" viewBox="0 0 90 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M30 4C24 4 18 6 14 10C10 14 6 20 4 26C2 32 2 38 4 44C6 50 10 56 14 60C18 64 24 68 30 70C36 72 42 74 50 74C56 74 62 72 68 68C74 64 78 58 80 52C82 46 82 40 80 34C78 28 76 22 72 18C68 14 62 8 56 6C50 4 44 2 38 4L30 4Z" fill="var(--accent-dim)" stroke="var(--accent)" stroke-width="1.5"/>
+              <circle cx="44" cy="38" r="3.5" fill="var(--accent3)" stroke="#fff" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="stat-label" data-i18n="hero.pstat2">Live in (since 2013)</div>
         </div>
         <div class="stat">
           <div class="stat-value">💍</div>
-          <div class="stat-label" data-i18n="hero.pstat3">Married &amp; Committed</div>
+          <div class="stat-label" data-i18n="hero.pstat3">Married</div>
         </div>
         <div class="stat">
           <div class="stat-value" data-count="2">2</div>
@@ -2012,7 +2043,7 @@ const I18N = {
     "hero.sub":"Driving <strong>revenue growth</strong> across EMEA for Video Intelligence &amp; SaaS platforms. 15+ years turning complex tech into <strong>closed deals</strong> and lasting partnerships with Tier-1 Telcos, Broadcasters &amp; Streaming Platforms.",
     "hero.cta1":"Get in Touch","hero.cta2":"Explore my Journey",
     "hero.stat1":"Years Experience","hero.stat2":"Revenue Generated","hero.stat3":"Clients Served","hero.stat4":"Markets Covered",
-    "hero.pstat1":"Born in Bordeaux","hero.pstat2":"Madrid since 2013","hero.pstat3":"Married & Committed","hero.pstat4":"Kids \u2014 a Girl, a Boy (and a Beagle)","hero.pstat5":"Languages spoken",
+    "hero.pstat1":"Born in (1986)","hero.pstat2":"Live in (since 2013)","hero.pstat3":"Married","hero.pstat4":"Kids \u2014 a Girl, a Boy (and a Beagle)","hero.pstat5":"Languages spoken",
     "about.tag":"Who I Am","about.title":"The Short Version","about.text":"<p>I\u2019m a <strong>results-driven sales leader</strong> with 15+ years of experience in the video technology and SaaS industry. Based in Madrid, I\u2019ve built and scaled commercial operations across EMEA \u2014 from opening new markets from scratch to managing multi-million euro portfolios with Tier-1 Telcos and media groups.</p><p>My focus: <strong>turning complex technology into revenue</strong>. I\u2019ve worked across OTT, Broadcast, Telecom, and SaaS, leading teams and driving adoption of AI-powered solutions for QoS/QoE monitoring, audience insights, and content performance.</p><p>Trilingual (French, Spanish, English), I thrive in multicultural environments and bring a consultative approach to enterprise sales. Proud father of two, I\u2019m also passionate about nature, skiing, mountain biking, and cooking for friends.</p>",
     "exp.tag":"Career Path","exp.title":"Where I\u2019ve Made Impact",
     "exp.0.role":"Sales Director South EMEA \u2192 VP Sales EMEA, QoE BU",
@@ -2064,7 +2095,7 @@ const I18N = {
     "hero.sub":"Moteur de <strong>croissance du chiffre d\u2019affaires</strong> en EMEA pour les plateformes de Video Intelligence &amp; SaaS. Plus de 15 ans \u00e0 transformer des technologies complexes en <strong>contrats sign\u00e9s</strong> et en partenariats durables avec des op\u00e9rateurs Tier-1, des diffuseurs &amp; des plateformes de streaming.",
     "hero.cta1":"Me contacter","hero.cta2":"D\u00e9couvrir mon parcours",
     "hero.stat1":"Ann\u00e9es d\u2019exp\u00e9rience","hero.stat2":"CA g\u00e9n\u00e9r\u00e9","hero.stat3":"Clients servis","hero.stat4":"March\u00e9s couverts",
-    "hero.pstat1":"N\u00e9 \u00e0 Bordeaux","hero.pstat2":"Madrid depuis 2013","hero.pstat3":"Mari\u00e9 & Engag\u00e9","hero.pstat4":"Enfants \u2014 une Fille, un Gar\u00e7on (et un Beagle)","hero.pstat5":"Langues parl\u00e9es",
+    "hero.pstat1":"N\u00e9 en (1986)","hero.pstat2":"Vit \u00e0 (depuis 2013)","hero.pstat3":"Mari\u00e9","hero.pstat4":"Enfants \u2014 une Fille, un Gar\u00e7on (et un Beagle)","hero.pstat5":"Langues parl\u00e9es",
     "about.tag":"Qui suis-je","about.title":"En bref","about.text":"<p>Je suis un <strong>leader commercial orient\u00e9 r\u00e9sultats</strong> avec plus de 15 ans d\u2019exp\u00e9rience dans l\u2019industrie de la technologie vid\u00e9o et du SaaS. Bas\u00e9 \u00e0 Madrid, j\u2019ai construit et d\u00e9velopp\u00e9 des op\u00e9rations commerciales \u00e0 travers l\u2019EMEA \u2014 de l\u2019ouverture de nouveaux march\u00e9s \u00e0 la gestion de portefeuilles de plusieurs millions d\u2019euros avec des op\u00e9rateurs Tier-1 et des groupes m\u00e9dias.</p><p>Mon objectif : <strong>transformer la technologie complexe en chiffre d\u2019affaires</strong>. J\u2019ai travaill\u00e9 dans l\u2019OTT, la diffusion, les t\u00e9l\u00e9coms et le SaaS, en dirigeant des \u00e9quipes et en promouvant l\u2019adoption de solutions IA pour le monitoring QoS/QoE, l\u2019analyse d\u2019audience et la performance du contenu.</p><p>Trilingue (fran\u00e7ais, espagnol, anglais), je m\u2019\u00e9panouis dans les environnements multiculturels et j\u2019apporte une approche consultative \u00e0 la vente entreprise. Papa fier de deux enfants, je suis aussi passionn\u00e9 par la nature, le ski, le VTT et la cuisine entre amis.</p>",
     "exp.tag":"Parcours professionnel","exp.title":"L\u00e0 o\u00f9 j\u2019ai fait la diff\u00e9rence",
     "exp.0.role":"Directeur Commercial Sud EMEA \u2192 VP Sales EMEA, QoE BU",
@@ -2116,7 +2147,7 @@ const I18N = {
     "hero.sub":"Impulsor del <strong>crecimiento de ingresos</strong> en EMEA para plataformas de Video Intelligence y SaaS. M\u00e1s de 15 a\u00f1os convirtiendo tecnolog\u00eda compleja en <strong>acuerdos cerrados</strong> y alianzas duraderas con operadores Tier-1, broadcasters y plataformas de streaming.",
     "hero.cta1":"Contactarme","hero.cta2":"Explorar mi trayectoria",
     "hero.stat1":"A\u00f1os de experiencia","hero.stat2":"Ingresos generados","hero.stat3":"Clientes atendidos","hero.stat4":"Mercados cubiertos",
-    "hero.pstat1":"Nacido en Burdeos","hero.pstat2":"Madrid desde 2013","hero.pstat3":"Casado & Comprometido","hero.pstat4":"Hijos \u2014 una Chica, un Chico (y un Beagle)","hero.pstat5":"Idiomas hablados",
+    "hero.pstat1":"Nacido en (1986)","hero.pstat2":"Vive en (desde 2013)","hero.pstat3":"Casado","hero.pstat4":"Hijos \u2014 una Chica, un Chico (y un Beagle)","hero.pstat5":"Idiomas hablados",
     "about.tag":"Qui\u00e9n soy","about.title":"En breve","about.text":"<p>Soy un <strong>l\u00edder comercial orientado a resultados</strong> con m\u00e1s de 15 a\u00f1os de experiencia en la industria de tecnolog\u00eda de v\u00eddeo y SaaS. Basado en Madrid, he construido y escalado operaciones comerciales en toda EMEA \u2014 desde abrir nuevos mercados desde cero hasta gestionar portfolios multimillonarios con operadores Tier-1 y grupos de medios.</p><p>Mi enfoque: <strong>convertir tecnolog\u00eda compleja en ingresos</strong>. He trabajado en OTT, difusi\u00f3n, telecomunicaciones y SaaS, liderando equipos e impulsando la adopci\u00f3n de soluciones de IA para monitorizaci\u00f3n QoS/QoE, insights de audiencia y rendimiento de contenido.</p><p>Triling\u00fce (franc\u00e9s, espa\u00f1ol, ingl\u00e9s), me desenvuelvo con soltura en entornos multiculturales y aporto un enfoque consultivo a la venta empresarial. Padre orgulloso de dos hijos, tambi\u00e9n soy apasionado de la naturaleza, el esqu\u00ed, el BTT y la cocina entre amigos.</p>",
     "exp.tag":"Trayectoria profesional","exp.title":"Donde he dejado huella",
     "exp.0.role":"Director Comercial Sur EMEA \u2192 VP Sales EMEA, QoE BU",
